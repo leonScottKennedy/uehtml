@@ -1,5 +1,5 @@
 
-$(document).ready(function(e) {
+$(window).load(function() {
     
 	// 顶部无缝切换
 	// 把这部分代码单独抽离出来，从文档最底部引入，可以等文档结构和样式加载完成后，再进行宽度和高度计算

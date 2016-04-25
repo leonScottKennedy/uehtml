@@ -111,6 +111,7 @@ header {
 	display: block;
 	float: left;
 	position: relative;
+	z-index: 10000000;
 }
 #scale-nav > a {
 	display: block;
@@ -119,7 +120,7 @@ header {
 	margin-left:20px;
 	background: #505050 url(../images/openbtn.png) no-repeat center center;
 }
-#scale-nav div.scale-nav-dropDown{
+#scale-nav .scale-nav-dropDown{
 	background: #fff;
 	position:absolute;
 	left:20px;
@@ -352,7 +353,7 @@ header {
 	padding: 10px 0;
 	background: #f7f8f8;
 	box-shadow: 0 1px 2px rgba(0,0,0,.1);
-	z-index: 10;
+	z-index: 9;
 }
 
 #auto-menu {
