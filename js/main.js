@@ -317,14 +317,53 @@ $(function(){
 
 	// 广播效果
 	// $(selector).animate(styles,speed,easing,callback)
-	$("#menu div.bclist ul").animate({"top":"-40px"},200,"linear");
+	var $bcUl = $("#menu div.bclist ul");
+	var $sPrev = $("#menu div.tab a.slidePrev");
+	var $sNext = $("#menu div.tab a.slideNext");
+	
+	var sNow = 0;
+	var $bcliH = $bcUl.find("li").eq(0).height();
+	var sTimer = null;
+	
+	$(".bclist,.tab").mouseover(function(){
+		clearInterval(sTimer);
+	});	
+	
+	$(".bclist,.tab").mouseout(function(){
+		sTimer = setInterval(function(){
+			if(sNow == $bcUl.find("li").length-1){
+				sNow = 0;
+			}else{
+				sNow++;	
+			}
+			$bcUl.animate({top: -sNow*$bcliH},200,"linear");	
+		},3000);
+	});	
+	
+	sTimer = setInterval(function(){
+		if(sNow == $bcUl.find("li").length-1){
+				sNow = 0;
+			}else{
+				sNow++;	
+			}
+		$bcUl.animate({top: -sNow*$bcliH},200,"linear");	
+	},3000);	
 
-	$("#menu div.tab a.slidePrev").click(function(){
-
+	$sPrev.click(function(){
+		if(sNow == $bcUl.find("li").length-1){
+				sNow = 0;
+			}else{
+				sNow++;	
+			}
+		$bcUl.animate({top: -sNow*$bcliH},200,"linear");
 	});
 
-	$("#menu div.tab a.slideNext").click(function(){
-
+	$sNext.click(function(){
+		if(sNow == 0){
+			sNow = $bcUl.find("li").length;		
+		}
+		sNow--;
+		$bcUl.animate({top: -sNow*$bcliH},200,"linear");
 	});
 
 	// 动态计算#main的宽度
@@ -360,7 +399,7 @@ $(function(){
 	
 	// 倒计时、
 	var d = h = m = s = 0;
-	var iNew = new Date("May 3 2016 14:00:00");
+	var iNew = new Date("May 20 2016 14:00:00");
 	
 	var timer = null;
 	timer = setInterval(countTime,1000);
