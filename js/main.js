@@ -399,15 +399,13 @@ $(function(){
 	
 	// 倒计时、
 	var d = h = m = s = 0;
-	var iNew = new Date("May 20 2016 14:00:00");
+	var iNew = new Date("August 30 2016 14:14:50");
 	
 	var timer = null;
 	timer = setInterval(countTime,1000);
 	
 	function countTime(){
-		if(d=h=m=s=0){
-			clearInterval(timer);	
-		}
+		
 		var iNow = new Date();
 		var t = (iNew - iNow)/1000;
 		
@@ -420,6 +418,15 @@ $(function(){
 		$(".hours").html(h);
 		$(".minutes").html(m);
 		$(".seconds").html(s);
+
+		if( d == '00' && h == '00' && m == '00' && s == '00' ){
+			clearInterval(timer);
+			$(".days").html('00');
+			$(".hours").html('00');
+			$(".minutes").html('00');
+			$(".seconds").html('00');	
+		}
+		
 	}
 	
 	function toTwo(n){
